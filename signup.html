@@ -1,0 +1,294 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Sign Up Page</title>
+  <header>
+    <nav>
+      <ul>
+        <li><a href="./homepg.html" style="font-size: 18px;">Home</a></li>
+        <li><a href="./aboutpg.php" style="font-size: 18px;">About</a></li>
+        <li><a href="./showcase.php" style="font-size: 18px;">Showcase</a></li>
+        <li><a href="./browse.php" style="font-size: 18px;">Browse</a></li>
+        <li><a href="./dashboard.php" style="font-size: 18px;">Dashboard</a></li>
+      </ul>
+    </nav>
+  </header>
+  <style>
+    * {
+      font-family: 'Luxurious Roman', cursive;
+      color: azure;
+    }
+
+    body {
+      background-image: url(./background.jpg);
+      width: 100%;
+      height: 100%;
+      background-position: center;
+      background-size: cover;
+      position: relative;
+    }
+
+
+    header {
+      background: rgba(255, 255, 255, 0);
+      padding: 5px;
+      box-shadow: 0px 4px 4px rgb(0 0 0 / 25%);
+      position: fixed;
+      top: 0;
+      width: 100%;
+    }
+
+    nav ul {
+      margin-right: 10px;
+      list-style-type: disc;
+      margin-block-start: 1em;
+      margin-block-end: 1em;
+      margin-inline-start: 0px;
+      margin-inline-end: 0px;
+      padding-inline-start: 40px;
+      display: flex;
+      justify-content: flex-end;
+    }
+
+    nav li {
+      display: flex;
+      margin-left: 20px;
+      margin-right: 20px;
+      align-items: right;
+    }
+
+    nav a {
+      /* color: #05000060; */
+      color: rgb(249, 247, 247);
+      text-decoration: none;
+
+      font-size: 25px;
+    }
+
+
+    nav ul li::after {
+      content: '';
+      width: 0%;
+      height: 2px;
+      background: #d38581;
+      display: block;
+      margin: auto;
+      transition: 0.5s;
+    }
+    .logo{
+        background-image: url(./paperlesspages.png);
+        background-repeat: no-repeat;
+        position: absolute;
+        background-position: center;
+        width:750px;
+        height: 410px;
+        left: 600px;
+        overflow: hidden;
+    }
+
+    form {
+      align-items: center;
+      width: 40%;
+      margin-top: 300px;
+      margin-left: 525px;
+      padding: 40px;
+      background: rgba(255, 255, 255, 0);
+      border-radius: 10px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0);
+      font-family: 'Luxurious Roman', cursive;
+    }
+   
+    h2 {
+      margin-bottom: 20px;
+      text-align: center;
+      color: #e11e1e;
+    }
+    label{
+      font: size 26px;
+    }
+
+    input {
+      width: 50%;
+      padding: 10px;
+      font-style: normal;
+      font-weight: normal;
+      margin-bottom: 20px;
+      border: none;
+      background-color: #f2f2f229;
+      border-radius: 5px;
+      font-size: 20px;
+      color: #333;
+    }
+
+    input.error {
+      border: 2px solid #e74c3c;
+    }
+
+    input.success {
+      border: 2px solid #2ecc71;
+    }
+
+    small {
+      visibility: hidden;
+      color: #e74c3c;
+      font-size: 14px;
+      margin-bottom: 10px;
+    }
+
+    button {
+      /* width: 100%; */
+      padding: 10px;
+      margin-left: 270px;
+      border: none;
+      background-color: #5d270cd5;
+      border-radius: 5px;
+      color: #fff;
+      font-size: 26px;
+      cursor: pointer;
+    }
+
+    button:hover {
+      background-color: #532007a9;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="logo">
+  </div>
+  <br/>
+  <form id="form">
+    <h2>SIGN UP </h2>
+
+    <label for="username">Username
+      &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
+      <input type="text" id="username" placeholder="Enter your Username" />
+      <br />
+    </label>
+
+    <label for="email">Email
+      &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
+      <input type="email" id="email" placeholder="Enter your email id" />
+      <br />
+    </label>
+
+    <label for="password">Password
+      &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
+      <input type="password" id="password" placeholder="Enter your password" />
+      <br />
+    </label>
+
+    <label for="confirmPassword">Confirm Password
+      &nbsp; &nbsp;
+      <input type="password" id="confirmPassword" placeholder="Re-enter your password" />
+      <br />
+    </label>
+    <br/>
+    <button type="submit">Submit</button>
+  </form>
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      const form = document.getElementById('form');
+      const nameInput = document.getElementById('name');
+      const emailInput = document.getElementById('email');
+      const passwordInput = document.getElementById('password');
+      const confirmPasswordInput = document.getElementById(
+        'confirmPassword'
+      );
+
+      form.addEventListener('submit', (e) => {
+        e.preventDefault();
+
+        validateInputs();
+      });
+
+      // Validate all inputs and show errors if necessary
+      function validateInputs() {
+        nameInput.dispatchEvent(new Event('blur'));
+        emailInput.dispatchEvent
+          (new Event('blur'));
+        passwordInput.dispatchEvent(new Event('blur'));
+        confirmPasswordInput.dispatchEvent(new Event('blur'));
+      }
+      // Validate name input
+      nameInput.addEventListener('blur', () => {
+        if (nameInput.value === '') {
+          setError(nameInput, 'Name cannot be empty');
+        } else if (!/^[a-zA-Z ]+$/.test(nameInput.value)) {
+          setError(nameInput, 'Name can only contain letters and spaces');
+        } else {
+          setSuccess(nameInput);
+        }
+      });
+
+      // Validate email input
+      emailInput.addEventListener('blur', () => {
+        if (emailInput.value === '') {
+          setError(emailInput, 'Email cannot be empty');
+        } else if (!/\S+@\S+\.\S+/.test(emailInput.value)) {
+          setError(emailInput, 'Email is not valid');
+        } else {
+          setSuccess(emailInput);
+        }
+      });
+
+      // Validate password input
+      passwordInput.addEventListener('blur', () => {
+        if (passwordInput.value === '') {
+          setError(passwordInput, 'Password cannot be empty');
+        } else if (passwordInput.value.length < 8) {
+          setError(passwordInput, 'Password must be at least 8 characters');
+        } else if (!/[a-z]/.test(passwordInput.value)) {
+          setError(
+            passwordInput,
+            'Password must contain at least one lowercase letter'
+          );
+        } else if (!/[A-Z]/.test(passwordInput.value)) {
+          setError(
+            passwordInput,
+            'Password must contain at least one uppercase letter'
+          );
+        } else if (!/[0-9]/.test(passwordInput.value)) {
+          setError(
+            passwordInput,
+            'Password must contain at least one number'
+          );
+        } else {
+          setSuccess(passwordInput);
+        }
+      });
+
+      // Validate confirm password input
+      confirmPasswordInput.addEventListener('blur', () => {
+        if (confirmPasswordInput.value === '') {
+          setError(confirmPasswordInput, 'Please confirm your password');
+        } else if (confirmPasswordInput.value !== passwordInput.value) {
+          setError(confirmPasswordInput, 'Passwords do not match');
+        } else {
+          setSuccess(confirmPasswordInput);
+        }
+      });
+
+      // Set error state for input element
+      function setError(input, message) {
+        const small = input.nextElementSibling;
+        input.classList.add('error');
+        small.innerText = message;
+        small.style.visibility = 'visible';
+      }
+
+      // Set success state for input element
+      function setSuccess(input) {
+        const small = input.nextElementSibling;
+        input.classList.remove('error');
+        input.classList.add('success');
+        small.style.visibility = 'hidden';
+      }
+    });
+  </script>
+</body>
+
+</html>

@@ -1,0 +1,486 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login | Sign Up</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Luxurious+Roman&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Proza+Libre&display=swap" rel="stylesheet">
+
+</head>
+
+<style>
+    * {
+        margin: 0;
+        padding: 0;
+        font-family: 'Luxurious Roman', cursive;
+    }
+
+    .bg::before {
+        content: "";
+        background: url("./bg.jpg") no-repeat center center/cover;
+        opacity: 0.89;
+        z-index: -51;
+        position: absolute;
+        top: 0%;
+        left: 0%;
+        width: 100%;
+        height: 100vh;
+        box-sizing: border-box;
+    }
+
+    /* .bg
+{
+    background-image: url(./background.png);
+    width:100%;
+    height: 140vh;
+    background-position:center;
+    background-size: cover;
+    position: relative;
+} */
+
+    .navbar {
+        background: rgba(144, 119, 119, 0.1);
+        box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+
+    .navbar-links {
+        flex: 1;
+        text-align: right;
+    }
+
+    .navbar-links ul li {
+        list-style: none;
+        display: inline-block;
+        padding: 20px 35px;
+        position: relative;
+    }
+
+    .navbar-links ul li a {
+        color: #fff;
+        text-decoration: none;
+        font-size: 30px;
+    }
+
+    .navbar-links ul li::after {
+        content: '';
+        width: 0%;
+        height: 2px;
+        background: #d38581;
+        display: block;
+        margin: auto;
+        transition: 0.05s;
+    }
+
+    .navbar-links ul li:hover::after {
+        width: 100%;
+    }
+
+    .logopaper {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 100vw;
+        border-radius: 2px;
+    }
+
+    .quote {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 100vw;
+        font-family: 'Proza Libre';
+        font-style: italic;
+        font-weight: 400;
+        font-size: 17px;
+        line-height: 33px;
+        color: #FFFFFF;
+        mix-blend-mode: normal;
+    }
+
+    .abt {
+        padding-top: 50px;
+        display: flex;
+        
+        justify-content: center;
+        align-items: center;
+        width: 80vw;
+        margin-left: 240px;
+        font-family: 'Proza Libre';
+        font-style: normal;
+        font-weight: 500;
+        font-size: 14px;
+        line-height: 24px;
+        text-align: center;
+        color: #FFFFFF;
+    }
+
+    .send {
+
+        padding-top: 30px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 100vw;
+        font-family: 'Proza Libre';
+        font-style: normal;
+        font-weight: 600;
+        font-size: 20px;
+        line-height: 44px;
+        text-align: center;
+
+        color: #FFFFFF;
+    }
+
+    .prb {
+        padding-top: 20px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin-left: 10vw;
+        width: 80vw;
+        font-family: 'Proza Libre';
+        font-style: normal;
+        font-weight: 400;
+        font-size: 15px;
+        line-height: 27px;
+
+        color: #FFFFFF;
+    }
+
+    .enter {
+        padding-top: 10px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 80vw;
+        margin-left: 10vw;
+        font-family: 'Proza Libre';
+        font-style: normal;
+        font-weight: 600;
+        font-size: 18px;
+        line-height: 33px;
+
+        color: #FFFFFF;
+    }
+
+    .txtbox {
+        margin-top: 10px;
+        font-family: 'Proza Libre';
+        font-style: normal;
+        position: absolute;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 100vw;
+        resize: 'grabber';
+    }
+
+    .button {
+        margin-top: 100px;
+
+        border: none;
+        color: white;
+        padding: 2px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 80vw;
+        text-decoration: none;
+        display: inline-block;
+        font-size: 17px;
+        transition-duration: 0.4s;
+        cursor: pointer;
+        position: absolute;
+
+    }
+
+    .button1 {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin-top: 50px;
+        width: fit-content;
+        padding: 2px;
+        margin-left: 104vh;
+        background-color: white;
+        color: black;
+        border: 2px solid #dbcb8c;
+    }
+
+    .button1:hover {
+        background-color: #dbcb8c;
+        color: black;
+        border: 2px solid white;
+    }
+
+    .talk {
+        padding-top: 10px;
+        margin-top: 90px;
+        position: absolute;
+        width: 330px;
+        height: 45px;
+        top: 630px;
+        left: 475px;
+        margin-left: 40vh;
+        font-family: 'Proza Libre';
+        font-style: normal;
+        font-weight: 800;
+        font-size: 20px;
+        line-height: 44px;
+        text-align: center;
+
+        color: #FFFFFF;
+    }
+
+    
+    .line1 {
+        margin-left: 40vh;
+        margin-top: 100px;
+        position: absolute;
+        width: 115.02px;
+        height: 0px;
+        left: 400px;
+        top: 730px;
+
+        border: 3px solid #FFFFFF;
+        transform: rotate(89deg);
+    }
+
+    .line2 {
+        margin-left: 40vh;
+        margin-top: 100px;
+        position: absolute;
+        width: 110.02px;
+        height: 0px;
+        left: 800px;
+        top: 730px;
+
+        border: 3px solid #FFFFFF;
+        transform: rotate(88.96deg);
+    }
+
+    .phpic {
+        margin-left: 40vh;
+        margin-top: 100px;
+        position: absolute;
+        width: 47.77px;
+        height: 47px;
+        left: 480px;
+        top: 680px;
+
+        background: url(./phpic.jpg);
+    }
+
+    .ph {
+        margin-left: 40vh;
+        margin-top: 100px;
+        position: absolute;
+        width: 193px;
+        height: 33px;
+        left: 500px;
+        top: 680px;
+
+        font-family: 'Proza Libre';
+        font-style: normal;
+        font-weight: 400;
+        font-size: 13px;
+        line-height: 33px;
+
+        text-align: center;
+
+        color: #FFFFFF;
+    }
+
+    .mailpic {
+        margin-left: 40vh;
+        margin-top: 100px;
+        position: absolute;
+        width: 43px;
+        height: 36.28px;
+        left: 675px;
+        top: 680px;
+
+        background: url(./mailpic.jpg);
+    }
+
+    .mail {
+        margin-left: 40vh;
+        margin-top: 100px;
+        position: absolute;
+        width: 193px;
+        height: 34px;
+        left: 690px;
+        top: 680px;
+
+        font-family: 'Proza Libre';
+        font-style: normal;
+        font-weight: 400;
+        font-size: 13px;
+        line-height: 34px;
+        text-align: center;
+
+        color: #FFFFFF;
+    }
+
+    .insta {
+        margin-left: 40vh;
+        margin-top: 100px;
+        position: absolute;
+        width: 49px;
+        height: 53px;
+        left: 500px;
+        top: 737px;
+        background: url(./insta.jpg);
+    }
+
+    .twit {
+        margin-left: 40vh;
+        margin-top: 100px;
+        position: absolute;
+        width: 58px;
+        height: 53px;
+        left: 585px;
+        top: 737px;
+
+        background: url(./twit.jpg);
+    }
+
+    .pint {
+        margin-left: 40vh;
+        margin-top: 100px;
+        position: absolute;
+        width: 51px;
+        height: 53px;
+        left: 685px;
+        top: 737px;
+
+        background: url(./pint.jpg);
+    }
+
+    .fb {
+        margin-left: 40vh;
+        margin-top: 100px;
+        position: absolute;
+        width: 53.31px;
+        height: 53px;
+        left: 780px;
+        top: 737px;
+        background: url(./fb.jpg);
+    }
+</style>
+
+<body bgcolor="black">
+
+    <div class="bg">
+
+        <div class="navbar">
+
+            <div class="navbar-links">
+                <ul>
+                    <li><a href="./homepg.html" style="font-size: 15px;">Home</a></li>
+                    <li><a href="./aboutpg.html" style="font-size: 15px;">About</a></li>
+                    <li><a href="./browse.php" style="font-size: 15px;">Browse</a></li>
+                    <li><a href="./aboutpg.html" style="font-size: 15px;">Contact</a></li>
+                    <li><a href="login.php" style="font-size: 15px;">Login | SignUp</a></li>
+                </ul>
+            </div>
+
+        </div>
+        <div class="logopaper">
+            <img src="./paperlesspages.png" height="250px" width="650px" alt="logo" style="vertical-align:middle;">
+        </div>
+
+        <div class="quote">
+            <pri>
+                "If you don't like reading, you haven't found the right book."
+                J. K. Rowling
+            </pri>
+        </div>
+
+        <div class="abt">
+            A eBook management system, is fundamental in the present day and age for dealing with the huge measure of
+            eBooks and data present in the market about eBooks. eBooks have filled a ton in the beyond couple of years
+            because of the increment of data and the ascent in the pattern of individuals tending towards innovation and
+            devices as the world digitalizes itself. The issue we are attempting to settle with the Paperless Pages eBook
+            Management System is the absence of a legitimate eBook management system.
+        </div>
+
+        <div class="send">
+            - SEND US A MESSAGE -
+        </div>
+
+        <div class="prb">
+            If there is an issues please contact us at the below given platforms, and we'll be glad to sort put the
+            issue!
+        </div>
+        <!--
+    
+        <div class="enter">
+            Enter Your Message: 
+        </div>
+        <div class="txtbox"></div>  
+background: rgba(196, 196, 196, 0.35);
+
+-->
+        <div class="talk">
+            - TALK TO US -
+        </div>
+
+
+
+        <form action="insert.php" method="post">
+            <p>
+            <div class="enter">
+                <label for="msg">Enter Your Message:</label>
+            </div>
+            <div class="txtbox"><input type="text" name="message" id="msg"></div>
+
+            </p>
+            <div class="bt">
+                <button class="button button1">Submit</button>
+                <!--<input type="submit" value="Submit">-->
+            </div>
+        </form>
+
+
+
+        <div class="Iconss">
+            <br/>
+            <div class="line1"></div>
+
+            <div class="phpic"></div>
+            <div class="ph">+91 8299750729</div>
+
+            <div class="mailpic"></div>
+            <div class="mail">paperlesspages.com</div>
+
+            <div class="insta"> 
+                <!-- <a href="https://www.instagram.com/paperless.pages/"></a> -->
+                <!-- <img src="https://www.instagram.com/paperless.pages/" onclick="window.open(this.src)"> -->
+            </div>
+            <div class="twit"></div>
+            <div class="pint"></div>
+            <div class="fb">
+                <!-- <a href="https://www.facebook.com/PaperlessPages/"></a> -->
+            </div>
+
+            <div class="line2"></div>
+        </div>
+
+    </div>
+
+</body>
+
+</html>
